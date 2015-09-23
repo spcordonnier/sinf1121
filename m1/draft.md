@@ -109,6 +109,20 @@ Question 6
  Un
  Deux
  ```
+ Question 7
+----------
+Le paramètre -Xmx définit la taille maximale de mémoire qu'on peut allouer sur le tas.
+Par contre, le drapeau -Xms spécifie la taille de la mémoire initiale du tas.
+Si on met une valeur très faible au paramètre -xmx, il se peut que le programme risque de ne pas avoir assez de mémoire car il aura atteint la taille maximale du tas.
+Par contre, le paramètre -Xms peut accélérer le programme, ça peut éviter au programme d'agrandir le tas constamment. Ce qui améliore un peu les performances.
+
+Question 8
+----------
+Un itérateur est un objet qui permet de parcourir tous les éléments de, par exemple, une liste.
+Utiliser un itérateur est utile, cela permet d'explorer tous les objets d'une liste.
+Si on modifie la structure de données alors qu'on est en train d'itérer sur celle-ci, il est possible qu'on arrive à un problème. Si jamais on supprime un noeud alors qu'un itérateur pointe sur ce noeud, l'itérateur ne pointera plus sur un objet mais vers null. Il ne sera donc plus possible de parcourir la liste.
+
+TO DO : modification du code de l’iterateur de Stack qui lance une java.util.ConcurrentModificationException si le client modifie la collection avec un push() ou pop() durant l’itération. ==> bonne idee remove() vide ?
 Question 11
 -----------
 
