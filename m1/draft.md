@@ -60,7 +60,9 @@ Un itérateur est un objet qui permet de parcourir tous les éléments de, par e
 Utiliser un itérateur est utile, cela permet d'explorer tous les objets d'une liste.
 Si on modifie la structure de données alors qu'on est en train d'itérer sur celle-ci, il est possible qu'on arrive à un problème. Si jamais on supprime un noeud alors qu'un itérateur pointe sur ce noeud, l'itérateur ne pointera plus sur un objet mais vers null. Il ne sera donc plus possible de parcourir la liste.
 
-TO DO : modification du code de l’iterateur de Stack qui lance une java.util.ConcurrentModificationException si le client modifie la collection avec un push() ou pop() durant l’itération. ==> bonne idee remove() vide ?
+Si le client modifie la collection avec un push() ou un pop() durant l'itération, il faut modifier le code de l'itérateur du Stack qui lance une java.util.ConcurrentModificationException. Pour se faire, il faut maintenir un compteur qui compte le nombre de push() et de pop() réalisés. Quand on crée l'itérateur, il faut stocker le compteur comme une variable dans l'instance de l'itérateur. Avant d'appeler hasNext() ou next(), il faut chaque fois vérifier si cette valeur n'a pas changé. Si elle a changé, une exception java.util.ConcurrentModificationException sera lancée.
+
+Si on ne désire pas utiliser la fonctionnalité remove(), c'est une bonne idée de la laisser vide. On est obligé d'avoir une méthode remove() car elle est déclarée dans l'interface. On la laisse vide puisqu'on ne veut pas l'utiliser. Si jamais on appelle cette fonction, rien ne se passera.
 
 
 Question 11
